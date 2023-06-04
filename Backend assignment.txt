@@ -1,0 +1,210 @@
+1.
+ def selection_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        min_index = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+
+input_list = input("Enter a list of numbers, separated by spaces: ").split()
+input_list = [int(num) for num in input_list]
+
+sorted_list = selection_sort(input_list)
+print("Sorted list:", sorted_list)
+
+
+--------------------------------------------------------------------
+2.
+
+def get_file_type(extension_type_string, file_list):
+    extension_type_pairs = extension_type_string.split(';')
+    extension_type_dict = {}
+    result_dict = {}
+
+
+    for pair in extension_type_pairs:
+        extension, file_type = pair.split(',')
+        extension_type_dict[extension] = file_type
+
+    for file_name in file_list:
+        file_extension = file_name.split('.')[-1]
+        if file_extension in extension_type_dict:
+            result_dict[file_name] = extension_type_dict[file_extension]
+        else:
+            result_dict[file_name] = "unknown"
+
+    return result_dict
+
+
+extension_type_string = "xls,spreadsheet;xlsx,spreadsheet;jpg,image"
+file_list = ["abc.jpg", "xyz.xls", "text.csv", "123"]
+result = get_file_type(extension_type_string, file_list)
+print(result)
+
+------------------------------------------------------------------------------------
+3.
+
+
+def sort_list_of_dicts(lst, key):
+    sorted_list = sorted(lst, key=lambda x: x[key])
+    return sorted_list
+
+
+fruits = [
+    {"fruit": "orange", "color": "orange"},
+    {"fruit": "apple", "color": "red"},
+    {"fruit": "banana", "color": "yellow"},
+    {"fruit": "blueberry", "color": "blue"}
+]
+
+sorted_by_fruit = sort_list_of_dicts(fruits, "fruit")
+print(sorted_by_fruit)
+
+sorted_by_color = sort_list_of_dicts(fruits, "color")
+print(sorted_by_color)
+
+
+
+
+---------------------------------------------------------------------------
+4.
+
+def switch_keys_values(dictionary):
+    return {value: key for key, value in dictionary.items()}
+
+----------------------------------------------------------------------------
+5.
+
+def compare_lists(list1, list2):
+    common_elements = list(set(list1) & set(list2))
+    not_common_elements = list(set(list1) ^ set(list2))
+    return common_elements, not_common_elements
+
+mainstream = ["One Punch Man", "Attack On Titan", "One Piece", "Sword Art Online", "Bleach", "Dragon Ball Z", "One Piece"]
+must_watch = ["Full Metal Alchemist", "Code Geass", "Death Note", "Stein's Gate", "The Devil is a Part Timer!", "One Piece", "Attack On Titan"]
+
+common, not_common = compare_lists(mainstream, must_watch)
+print(common)
+print(not_common)
+
+----------------------------------------------------------------------------
+6.
+
+def get_sublist(lst, start_index, end_index):
+    sublist = lst[start_index:end_index+1:2]
+    return sublist
+
+# Example usage
+user_input = input("Enter a list of elements, separated by spaces: ")
+lst = user_input.split()
+start_index = int(input("Enter the starting index: "))
+end_index = int(input("Enter the ending index: "))
+
+sublist = get_sublist(lst, start_index, end_index)
+print("Sublist:", sublist)
+
+----------------------------------------------------------------------------
+
+7.
+
+
+factorial = lambda n: 1 if n == 0 else n * factorial(n-1)
+
+# Example usage
+number = int(input("Enter a number: "))
+result = factorial(number)
+print("Factorial:", result)
+
+
+------------------------------------------------------------------------------
+8.
+
+a)
+The final value of A0 is {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+
+b)
+The final value of A1 is range(0, 10). It creates a range object representing the sequence of numbers from 0 to 9
+
+c)
+The final value of A2 is [1, 2, 3, 4, 5]. It creates a list comprehension that filters the numbers in A1 that are present as keys in A0. Then, it sorts the resulting list
+
+d)
+The final value of A3 is [1, 2, 3, 4, 5]. It creates a list comprehension that retrieves the values from A0 corresponding to each key in A0. Then, it sorts the resulting list.
+
+e)
+The final value of A4 is [1, 2, 3, 4, 5]. It creates a list comprehension that filters the numbers in A1 that are present in A3
+
+f)
+The final value of A5 is {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}. It creates a dictionary where keys are the numbers from 0 to 9, and values are the square of each number
+
+g)
+The final value of A6 is [[0, 0], [1, 1], [2, 4], [3, 9], [4, 16], [5, 25], [6, 36], [7, 49], [8, 64], [9, 81]]. It creates a list of lists where each inner list contains a number from A1 and its square
+
+h)
+The final value of A7 is 21. This line of code is incomplete and throws an error because the reduce function is not defined. If we assume the reduce function is imported from the functools module, it would sum all the elements in the given list
+
+i)
+The final value of A8 is [2, 4, 6, 8]. It applies the lambda function to each element in the list and returns a map object. To see the values, you can convert it to
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9.
+from datetime import datetime, timedelta
+
+def check_date_difference(from_date, to_date, difference):
+    date_format = '%y-%m-%d'
+    from_datetime = datetime.strptime(from_date, date_format)
+    to_datetime = datetime.strptime(to_date, date_format)
+    date_difference = abs((to_datetime - from_datetime).days)
+    
+    if date_difference < difference:
+        return True
+    else:
+        return False
+
+# Example usage
+from_date = input("Enter the from date (yy-mm-dd): ")
+to_date = input("Enter the to date (yy-mm-dd): ")
+difference = int(input("Enter the difference in days: "))
+
+result = check_date_difference(from_date, to_date, difference)
+print("Result:", result)
+
+
+-----------------------------------------------------------------------------
+10.
+
+from datetime import datetime, timedelta
+
+def get_previous_date(date, n):
+    date_format = '%y-%m-%d'
+    input_date = datetime.strptime(date, date_format)
+    previous_date = input_date - timedelta(days=n)
+    previous_date_str = previous_date.strftime(date_format)
+    
+    return previous_date_str
+
+# Example usage
+date = input("Enter a date (yy-mm-dd): ")
+n = int(input("Enter the number of days: "))
+
+previous_date = get_previous_date(date, n)
+print("Previous date:", previous_date)
+
+
+--------------------------------------------------------------------------
+11.
+the output of the code is :-
+
+[0]
+[0, 1]
+[3, 2, 1, 0]
+[3, 2, 1, 0, 1]
+[3, 2, 1, 0, 1, 4]
+[0, 1, 0]
+[0, 1, 0, 1]
+[0, 1, 0, 1, 4]
+------------------------------------------------------------------------------
