@@ -1,4 +1,5 @@
 1.
+
  def selection_sort(arr):
     n = len(arr)
     for i in range(n-1):
@@ -150,7 +151,8 @@ i)
 The final value of A8 is [2, 4, 6, 8]. It applies the lambda function to each element in the list and returns a map object. To see the values, you can convert it to
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
 9.
 from datetime import datetime, timedelta
 
@@ -165,7 +167,6 @@ def check_date_difference(from_date, to_date, difference):
     else:
         return False
 
-# Example usage
 from_date = input("Enter the from date (yy-mm-dd): ")
 to_date = input("Enter the to date (yy-mm-dd): ")
 difference = int(input("Enter the difference in days: "))
@@ -187,7 +188,6 @@ def get_previous_date(date, n):
     
     return previous_date_str
 
-# Example usage
 date = input("Enter a date (yy-mm-dd): ")
 n = int(input("Enter the number of days: "))
 
@@ -197,6 +197,7 @@ print("Previous date:", previous_date)
 
 --------------------------------------------------------------------------
 11.
+
 the output of the code is :-
 
 [0]
